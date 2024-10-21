@@ -4,14 +4,13 @@ Weapon::Weapon(int damage, int durability, std::string name, std::string descrip
 {
 	mDamage = damage;
 	mDurability = durability;
-	mType = type;
 }
 
 void Weapon::Attack()
 {
 	printf("You did %i damage", mDamage);
 
-	if (mType & ItemType::Breakable) 
+	if (HasFlag(mType, ItemType::Breakable)) 
 	{
 		printf("You durability is now %i", mDurability);
 		ChangeDurability(1);
@@ -35,10 +34,10 @@ void Weapon::ChangeDurability(int durability)
 
 void Weapon::AddType(uint8_t type)
 {
-	mType + (ItemType::Type)type;
+	mType = mType + (ItemType::Type)type;
 }
 
 void Weapon::RemoveType(uint8_t type)
 {
-	mType - (ItemType::Type)type;
+	mType = mType - (ItemType::Type)type;
 }

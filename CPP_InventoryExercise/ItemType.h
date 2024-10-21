@@ -12,20 +12,31 @@ namespace ItemType {
         Armor = 1 << 6, //64
     };
 
-    uint8_t operator +(const uint8_t& a, const Type& b) {
+    static uint8_t operator +(const uint8_t& a, const Type& b)
+    {
         return a | b;
     }
 
-    uint8_t operator -(const uint8_t& a, const Type& b) {
+    static uint8_t operator -(const uint8_t& a, const Type& b)
+    {
         return a ^ b;
     }
 
-    void operator +=(uint8_t& a, const Type& b) {
-        a = a | b;
+    static uint8_t operator +=(uint8_t& a, const Type& b)
+    {
+        return a |= b;
     }
 
-    void operator -=(uint8_t& a, const Type& b) {
-        a = a ^ b;
+    static uint8_t operator -=(uint8_t& a, const Type& b) 
+    {
+        return a ^= b;
     }
+}
+
+template <typename ValueType, typename FlagType>
+
+static bool HasFlag(ValueType type, FlagType flag)
+{
+    return type & flag;
 }
 

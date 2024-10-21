@@ -21,7 +21,5 @@ public:
 private:
 	int mDamage = 3;
 	int mDurability = 10;
-
-	uint8_t mType;
 };
 

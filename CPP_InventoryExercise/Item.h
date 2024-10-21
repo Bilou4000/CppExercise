@@ -11,7 +11,7 @@ public:
 	std::uint8_t GetType();
 	std::uint8_t GetEffect();
 
-private:
+protected:
 	std::string mName = "ItemName";
 	std::string mDescription = "An incredible item";
 	std::uint8_t mType;

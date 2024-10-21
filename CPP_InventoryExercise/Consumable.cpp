@@ -17,5 +17,5 @@ std::uint8_t Consumable::GetType()
 
 void Consumable::Consume()
 {
-	delete(this);
+	printf("You have consume %s", mName.c_str());
 }
