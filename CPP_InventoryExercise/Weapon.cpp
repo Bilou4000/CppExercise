@@ -1,6 +1,7 @@
 #include "Weapon.h"
 
-Weapon::Weapon(int damage, int durability, std::string name, std::string description, int cost, std::uint8_t type, std::uint8_t effect):Item(name, description, cost, type, effect)
+Weapon::Weapon(int id, int damage, int durability, std::string name, std::string description, int cost, std::uint8_t type, std::uint8_t effect)
+	:Item(id, name, description, cost, type, effect)
 {
 	mDamage = damage;
 	mDurability = durability;
@@ -8,11 +9,11 @@ Weapon::Weapon(int damage, int durability, std::string name, std::string descrip
 
 void Weapon::Attack()
 {
-	printf("You did %i damage", mDamage);
+	printf("You did %i damage \n", mDamage);
 
 	if (HasFlag(mType, ItemType::Breakable)) 
 	{
-		printf("You durability is now %i", mDurability);
+		printf("You durability is now %i \n", mDurability);
 		ChangeDurability(1);
 	}
 }

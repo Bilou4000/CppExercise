@@ -8,5 +8,6 @@ namespace ItemEffect {
         HeatResistance = 1 << 3, //8
         ColdResistance = 1 << 4, //16
         Immunity = 1 << 5, //32
+        None = 1 << 6, //64
     };
 }

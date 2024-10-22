@@ -1,6 +1,7 @@
 #include "Consumable.h"
 
-Consumable::Consumable(std::uint8_t consumableType,std::string name, std::string description, int cost, std::uint8_t type, std::uint8_t effect):Item(name, description, cost, type, effect)
+Consumable::Consumable(int id, std::uint8_t consumableType,std::string name, std::string description, int cost, std::uint8_t type, std::uint8_t effect)
+	:Item(id, name, description, cost, type, effect)
 {
 	mConsumableType = consumableType;
 }

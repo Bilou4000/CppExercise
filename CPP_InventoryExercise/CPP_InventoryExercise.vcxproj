@@ -127,7 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ItemEffect.cpp" />
+    <ClCompile Include="Flammable.cpp" />
+    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="ItemEffect.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Consumable.cpp" />
@@ -135,6 +137,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsumableType.h" />
+    <ClInclude Include="Flammable.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemType.h" />
     <ClInclude Include="Consumable.h" />

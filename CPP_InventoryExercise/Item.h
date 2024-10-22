@@ -1,10 +1,20 @@
 #pragma once
 #include <string>
 
-class Item
+#include "Flammable.h"
+
+class Item : public Flammable
 {
 public:
-	Item(std::string name, std::string description, int cost, std::uint8_t type, std::uint8_t effect);
+	Item(int id, std::string name, std::string description, int cost, std::uint8_t type, std::uint8_t effect);
+
+	void SpreadFire() override;
+
+	std::string GetName();
+	std::string GetDescription();
+	int GetID();
+	int GetBuyPrice();
+	int GetSellPrice();
 
 	void SetType(std::uint8_t type);
 	void SetEffect(std::uint8_t effect);
@@ -18,5 +28,6 @@ protected:
 	std::uint16_t mEffect;
 
 	int mCost = 10;
+	int mID = 0;
 };
 

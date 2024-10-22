@@ -24,12 +24,12 @@ namespace ItemType {
 
     static uint8_t operator +=(uint8_t& a, const Type& b)
     {
-        return a |= b;
+        return a = a + b;
     }
 
     static uint8_t operator -=(uint8_t& a, const Type& b) 
     {
-        return a ^= b;
+        return a = a - b;
     }
 }
 
