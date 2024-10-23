@@ -7,6 +7,7 @@ Item::Item(int id, std::string name, std::string description, int cost, std::uin
 	mCost = cost;
 	mType = type;
 	mEffect = effect;
+	mFirstType = type;
 }
 
 void Item::SpreadFire()
@@ -14,27 +15,27 @@ void Item::SpreadFire()
 	printf("Your %s is spreading fire ! \n", mName.c_str());
 }
 
-std::string Item::GetName()
+std::string Item::GetName() const
 {
 	return mName;
 }
 
-std::string Item::GetDescription()
+std::string Item::GetDescription() const
 {
 	return mDescription;
 }
 
-int Item::GetID()
+int Item::GetID() const
 {
 	return mID;
 }
 
-int Item::GetBuyPrice()
+int Item::GetBuyPrice() const
 {
 	return mCost;
 }
 
-int Item::GetSellPrice()
+int Item::GetSellPrice() const
 {
 	return mCost / 2;
 }
@@ -49,12 +50,17 @@ void Item::SetEffect(std::uint8_t effect)
 	mEffect = effect;
 }
 
-std::uint8_t Item::GetType()
+std::uint8_t Item::GetType() const
 {
 	return mType;
 }
 
-std::uint8_t Item::GetEffect()
+std::uint8_t Item::GetFirstType() const
+{
+	return mFirstType;
+}
+
+std::uint8_t Item::GetEffect() const
 {
 	return mEffect;
 }

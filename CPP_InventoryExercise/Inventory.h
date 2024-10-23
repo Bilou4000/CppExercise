@@ -2,6 +2,7 @@
 #include "Item.h"
 
 #include <vector>
+//#include <map>
 
 class Inventory
 {
@@ -12,9 +13,8 @@ public:
 	void RemoveFromInventory(int id);
 	void AddToInventory(Item* equipment);
 
-	std::vector<Item*> GetContent();
-	Item* GetInventoryItemFromID(int id);
-	int GetInventorySize();
+	std::vector<Item*> GetInventory() const;
+	Item* GetInventoryItemFromID(int id) const;
 	int GetID();
 
 private:
@@ -24,7 +24,6 @@ private:
 	int mMoneyCount = 500;
 
 	std::vector<Item*> mInventory;
-
-
+	//std::map<uint8_t, Item*> mTypeInventory;
 };
 

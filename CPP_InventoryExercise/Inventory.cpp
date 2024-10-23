@@ -52,12 +52,12 @@ void Inventory::AddToInventory(Item* item)
 	}
 }
 
-std::vector<Item*> Inventory::GetContent()
+std::vector<Item*> Inventory::GetInventory() const
 {
 	return mInventory;
 }
 
-Item* Inventory::GetInventoryItemFromID(int id)
+Item* Inventory::GetInventoryItemFromID(int id) const
 {
 	for(int i = 0; i < mInventory.size(); i++)
 	{
@@ -67,11 +67,6 @@ Item* Inventory::GetInventoryItemFromID(int id)
 			return item;
 		}
 	}
-}
-
-int Inventory::GetInventorySize()
-{
-	return mInventory.size();
 }
 
 int Inventory::GetID()
