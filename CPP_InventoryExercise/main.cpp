@@ -1,5 +1,5 @@
 #include <iostream>
-#include<algorithm>
+
 
 #include "ConsumableType.h"
 #include "ItemType.h"
@@ -9,8 +9,6 @@
 
 #include "Weapon.h"
 #include "Consumable.h"
-
-
 
 Inventory* inventory = new Inventory();
 
@@ -36,35 +34,20 @@ int main()
     inventory->Buying(axe);
 
 
-    //std::vector<uint8_t> type;
+    for (Item* item : inventory->GetInventory())
+    {
+        printf("%s \n", item->GetName().c_str());
+        printf("%d\n", item->GetFirstType());
 
-    //for (Item* item : inventory->GetContent())
-    //{
-    //    printf("%s \n", item->GetName().c_str());
-    //    //printf("%d\n", (uint8_t) item->GetType());
-    //    printf("%d\n", (uint8_t) item->GetFirstType());
+    }
 
-    //    //type.push_back((uint8_t) item->GetFirstType());
+    inventory->SortInventory();
 
-    //}
+    for (Item* item : inventory->GetInventory())
+    {
+        printf("%s \n", item->GetName().c_str());
+        printf("%d\n", (uint8_t) item->GetFirstType());
 
-    //for (int i = 0; i < inventory->GetContent().size(); i++)
-    //{
-    //    for (int j = 0; j < inventory->GetContent().size() - 1; j++)
-    //    {
-    //        if ((uint8_t) item->GetFirstType()[j].x <inventory->GetContent()[j + 1].x)
-    //            std::swap(myVector[j], myVector[j + 1]);
-    //    }
-    //}
-   // std::sort(inventory->GetContent().begin(), inventory->GetContent().end(), inventory->GetID());
-
-    //for (Item* item : inventory->GetContent())
-    //{
-    //    printf("%s \n", item->GetName().c_str());
-    //    //printf("%d\n", (uint8_t) item->GetType());
-    //    printf("%d\n", (uint8_t) item->GetFirstType());
-
-    //}
-
+    }
 }
 

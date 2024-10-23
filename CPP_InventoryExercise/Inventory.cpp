@@ -1,4 +1,14 @@
+#include<algorithm>
+
 #include "Inventory.h"
+
+struct ItemSorting
+{
+	bool operator()(const Item* a, const Item* b)
+	{
+		return a->GetFirstType() < b->GetFirstType();
+	}
+};
 
 void Inventory::Buying(Item* item)
 {
@@ -52,7 +62,12 @@ void Inventory::AddToInventory(Item* item)
 	}
 }
 
-std::vector<Item*> Inventory::GetInventory() const
+void Inventory::SortInventory()
+{
+	std::sort(mInventory.begin(), mInventory.end(), ItemSorting {});
+}
+
+std::vector<Item*>& Inventory::GetInventory()
 {
 	return mInventory;
 }

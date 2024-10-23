@@ -13,7 +13,9 @@ public:
 	void RemoveFromInventory(int id);
 	void AddToInventory(Item* equipment);
 
-	std::vector<Item*> GetInventory() const;
+	void SortInventory();
+
+	std::vector<Item*>& GetInventory();
 	Item* GetInventoryItemFromID(int id) const;
 	int GetID();
 

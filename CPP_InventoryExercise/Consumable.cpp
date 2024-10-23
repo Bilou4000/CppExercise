@@ -11,7 +11,7 @@ void Consumable::SetType(std::uint8_t type)
 	mConsumableType = type;
 }
 
-std::uint8_t Consumable::GetType()
+std::uint8_t Consumable::GetType() const
 {
 	return mConsumableType;
 }
