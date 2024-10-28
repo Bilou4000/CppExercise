@@ -56,7 +56,7 @@ void Inventory::RemoveFromInventory(int id)
 		//check if item id has same id of an item in inventory
 		if(mInventory[i]->GetID() == id)
 		{
-			///UnloadTexture(mInventory[i]->GetTexture());///
+			/* UnloadTexture(mInventory[i]->GetTexture()); */
 			//delete and erase item from inventory
 			delete mInventory[i];
 			mInventory.erase(mInventory.begin() + i);
@@ -100,6 +100,7 @@ void Inventory::SortInventory()
 	std::sort(mInventory.begin(), mInventory.end(), ItemSorting {});
 }
 
+//return the inventory vector of items
 std::vector<Item*>& Inventory::GetInventory()
 {
 	return mInventory;
