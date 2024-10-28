@@ -2,7 +2,6 @@
 #include "Item.h"
 
 #include <vector>
-//#include <map>
 
 class Inventory
 {
@@ -17,15 +16,14 @@ public:
 
 	std::vector<Item*>& GetInventory();
 	Item* GetInventoryItemFromID(int id) const;
-	int GetID();
+	int NewID();
 
 private:
-	const int mInventorySize = 25;
+	const int mMaxInventorySize = 25;
 
 	int mID = 0;
 	int mMoneyCount = 500;
 
 	std::vector<Item*> mInventory;
-	//std::map<uint8_t, Item*> mTypeInventory;
 };
 

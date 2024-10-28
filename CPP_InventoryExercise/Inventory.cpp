@@ -1,6 +1,7 @@
 #include<algorithm>
 
 #include "Inventory.h"
+#include "ItemType.h"
 
 struct ItemSorting
 {
@@ -46,14 +47,25 @@ void Inventory::RemoveFromInventory(int id)
 			//UnloadTexture(mInventory[i]->GetTexture());
 			delete mInventory[i];
 			mInventory.erase(mInventory.begin() + i);
+			return;
 		}
 	}
 }
 
 void Inventory::AddToInventory(Item* item)
 {
-	if(mInventory.size() < 25)
+	if(mInventory.size() < mMaxInventorySize)
 	{
+		for (size_t i = mInventory.size(); i--;)
+		{
+			if (item->GetFirstType() == mInventory[i]->GetFirstType())
+			{
+				std::vector<Item*>::iterator it = mInventory.begin() + (i + 1);
+				it = mInventory.insert(it, item);
+				return;
+			}
+		}
+
 		mInventory.push_back(item);
 	}
 	else
@@ -84,7 +96,7 @@ Item* Inventory::GetInventoryItemFromID(int id) const
 	}
 }
 
-int Inventory::GetID()
+int Inventory::NewID()
 {
 	mID++;
 	return mID;

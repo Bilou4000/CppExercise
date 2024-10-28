@@ -2,6 +2,7 @@
 
 Item::Item(int id, std::string name, std::string description, int cost, std::uint8_t type, std::uint8_t effect)
 {
+	mID = id;
 	mName = name;
 	mDescription = description;
 	mCost = cost;
