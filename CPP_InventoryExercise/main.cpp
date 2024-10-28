@@ -17,19 +17,23 @@ int main()
 {
     //create sword
     Weapon* sword = new Weapon(inventory->NewID(), 3, 5, "MagicSword", "The best sword", 10, ItemType::Weapon, ItemEffect::None );
-    printf("%s \n", sword->GetName().c_str());
-    printf("%s \n",sword->GetDescription().c_str());
+    printf("Name : %s \n", sword->GetName().c_str());
+    printf("Description : %s \n",sword->GetDescription().c_str());
 
     //attack without the tag Breakable
-    printf("%d\n", ( uint8_t ) sword->GetType());
+    printf("Type : %d\n", ( uint8_t ) sword->GetType());
+    printf("ATTACK : ");
     sword->Attack();
 
     //add tag Breakable
     sword->AddType(ItemType::Breakable);
+    printf("Add type Breakable to %s \n", sword->GetName().c_str());
     //attack again with tag
-    printf("%d\n", ( uint8_t ) sword->GetType());
+    printf("Type : %d\n", ( uint8_t ) sword->GetType());
+    printf("ATTACK : ");
     sword->Attack();
 
+    printf("-------------------------\n");
     //buy sword -> add to inventory
     inventory->Buying(sword);
 
@@ -46,7 +50,10 @@ int main()
     Consumable* speedPotion = new Consumable(inventory->NewID(), ConsumableType::Potion, "SpeedPotion", "A speed Potion", 5, ItemType::Consumable, ItemEffect::Speed);
     inventory->Buying(speedPotion);
 
+    printf("-------------------------\n");
+
     //print all items
+    printf("INVENTORY : \n");
     for (Item* item : inventory->GetInventory())
     {
         printf("%s \n", item->GetName().c_str());
@@ -54,6 +61,7 @@ int main()
         //printf("%d\n", item->GetID());
     }
 
+    printf("-------------------------\n");
     //sell one item
     inventory->Selling(axe);
 
@@ -63,6 +71,7 @@ int main()
     printf("-------------------------\n");
 
     //print all items
+    printf("INVENTORY : \n");
     for (Item* item : inventory->GetInventory())
     {
         printf("%s \n", item->GetName().c_str());
