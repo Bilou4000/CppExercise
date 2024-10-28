@@ -16,8 +16,10 @@ public:
 	int GetBuyPrice() const;
 	int GetSellPrice() const;
 
+	//set effect or type to item
 	void SetType(std::uint8_t type);
 	void SetEffect(std::uint8_t effect);
+
 	std::uint8_t GetType() const;
 	std::uint8_t GetFirstType() const;
 	std::uint8_t GetEffect() const;
