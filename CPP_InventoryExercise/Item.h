@@ -1,9 +1,10 @@
 #pragma once
 #include <string>
 
-#include "Flammable.h"
+#include "IFlammable.h"
+#include "ItemType.h"
 
-class Item : public Flammable
+class Item : public IFlammable
 {
 public:
 	Item(int id, std::string name, std::string description, int cost, std::uint8_t type, std::uint8_t effect);
@@ -19,6 +20,10 @@ public:
 	//set effect or type to item
 	void SetType(std::uint8_t type);
 	void SetEffect(std::uint8_t effect);
+
+	//add type or remove type to item
+	void AddType(std::uint8_t type);
+	void RemoveType(std::uint8_t type);
 
 	std::uint8_t GetType() const;
 	std::uint8_t GetFirstType() const;

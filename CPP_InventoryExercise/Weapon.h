@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Item.h"
-#include "ItemType.h"
 
 class Weapon: public Item
 {
@@ -14,9 +13,6 @@ public:
 	void SetDurability(int newDurability);
 
 	void ChangeDurability(int durability);
-
-	void AddType(uint8_t type);
-	void RemoveType(uint8_t type);
 
 private:
 	int mDamage = 3;

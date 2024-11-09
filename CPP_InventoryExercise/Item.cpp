@@ -51,6 +51,16 @@ void Item::SetEffect(std::uint8_t effect)
 	mEffect = effect;
 }
 
+void Item::AddType(std::uint8_t type)
+{
+	mType = mType + (ItemType::Type) type;
+}
+
+void Item::RemoveType(std::uint8_t type)
+{
+	mType = mType - (ItemType::Type) type;
+}
+
 std::uint8_t Item::GetType() const
 {
 	return mType;

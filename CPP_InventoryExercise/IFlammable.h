@@ -1,7 +1,7 @@
 #pragma once
 
 //Flammable interface that can spread fire
-class Flammable
+class IFlammable
 {
 	virtual void SpreadFire() = 0;
 };

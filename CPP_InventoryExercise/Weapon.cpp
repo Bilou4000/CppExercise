@@ -32,13 +32,3 @@ void Weapon::ChangeDurability(int durability)
 {
 	mDurability -= durability;
 }
-
-void Weapon::AddType(uint8_t type)
-{
-	mType = mType + (ItemType::Type)type;
-}
-
-void Weapon::RemoveType(uint8_t type)
-{
-	mType = mType - (ItemType::Type)type;
-}

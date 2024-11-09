@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Item.h"
+#include "ItemType.h"
+#include "ConsumableType.h"
 
 class Consumable : public Item
 {
@@ -10,8 +12,11 @@ public:
 	void SetType(std::uint8_t type);
 	std::uint8_t GetType() const;
 
-	void Consume();
+	//add consumable type or remove one to item
+	void AddConsumableType(std::uint8_t type);
+	void RemoveConsumableType(std::uint8_t type);
 
+	void Consume();
 
 private:
 	std::uint8_t mConsumableType;

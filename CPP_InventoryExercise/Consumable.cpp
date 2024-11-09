@@ -9,11 +9,22 @@ Consumable::Consumable(int id, std::uint8_t consumableType,std::string name, std
 void Consumable::SetType(std::uint8_t type)
 {
 	mConsumableType = type;
+
 }
 
 std::uint8_t Consumable::GetType() const
 {
 	return mConsumableType;
+}
+
+void Consumable::AddConsumableType(std::uint8_t type)
+{
+	mConsumableType = mConsumableType + (ConsumableType::Type) type;
+}
+
+void Consumable::RemoveConsumableType(std::uint8_t type)
+{
+	mConsumableType = mConsumableType - (ConsumableType::Type) type;
 }
 
 void Consumable::Consume()

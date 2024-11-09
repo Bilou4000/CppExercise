@@ -10,7 +10,10 @@
 #include "Weapon.h"
 #include "Consumable.h"
 
+#include "FoodProcessor.h"
+
 Inventory* inventory = new Inventory();
+FoodProcessor* foodProcessor = new FoodProcessor(inventory);
 
 // Example
 int main()
@@ -65,6 +68,18 @@ int main()
     //sell one item
     inventory->Selling(axe);
 
+    //food processor
+    //buy herb
+    Consumable* herb = new Consumable(inventory->NewID(), ConsumableType::Food, "Herb", "A herb", 1, ItemType::Consumable, ItemEffect::None);
+    herb->AddConsumableType(ConsumableType::Herb);
+    herb->AddConsumableType(ConsumableType::Cookable);
+    inventory->Buying(herb);
+
+    //buy eggplant
+    Consumable* eggplant = new Consumable(inventory->NewID(), ConsumableType::Food, "EggPlant", "A purple eggplant", 1, ItemType::Consumable, ItemEffect::None);
+    eggplant->AddConsumableType(ConsumableType::Vegetable);
+    inventory->Buying(eggplant);
+
     //sort inventory
     inventory->SortInventory();
 
@@ -77,5 +92,27 @@ int main()
         printf("%s \n", item->GetName().c_str());
         printf("%d\n", (uint8_t) item->GetFirstType());
     }
+
+    printf("-------------------------\n");
+
+    printf("COOKING : \n");
+    //test without cookable tag
+    printf("note : The eggplant doesn't have tag Cookable\n");
+
+    foodProcessor->Cook(*herb, *eggplant);
+
+    //test with cookable tag
+    eggplant->AddConsumableType(ConsumableType::Cookable);
+    printf("note : Added the cookable tag to eggplant :\n");
+
+    foodProcessor->Cook(*herb, *eggplant);
+
+    printf("\nINVENTORY : \n");
+    for (Item* item : inventory->GetInventory())
+    {
+        printf("%s \n", item->GetName().c_str());
+        printf("%d\n", (uint8_t) item->GetFirstType());
+    }
+
 }
 
