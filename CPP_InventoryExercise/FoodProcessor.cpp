@@ -32,22 +32,14 @@ void FoodProcessor::GetNewCookedItem(Consumable& firstFood, Consumable& secondFo
 		mInventory->AddToInventory(vegetableStew);
 
 		printf("You made a Vegetable Stew !\n");
-
-		mInventory->RemoveFromInventory(firstFood.GetID());
-		mInventory->RemoveFromInventory(secondFood.GetID());
-		return;
 	}
 	//if we have a meat and a mushroom or both -> Vegetable Stew
-	if (HasFlag(firstFood.GetType(), ConsumableType::Meat) && HasFlag(secondFood.GetType(), ConsumableType::Mushroom))
+	else if(HasFlag(firstFood.GetType(), ConsumableType::Meat) && HasFlag(secondFood.GetType(), ConsumableType::Mushroom))
 	{
 		Consumable* MushroomPremiumSteak = new Consumable(mInventory->NewID(), ConsumableType::Food, "Mushroom Premium Steak", "An incredibly delicious steak", 5, ItemType::Consumable, ItemEffect::None);
 		mInventory->AddToInventory(MushroomPremiumSteak);
 
 		printf("You made an incredible Mushroom Premium Steak !\n");
-
-		mInventory->RemoveFromInventory(firstFood.GetID());
-		mInventory->RemoveFromInventory(secondFood.GetID());
-		return;
 	}
 	//if no specific recipe
 	else
@@ -56,9 +48,8 @@ void FoodProcessor::GetNewCookedItem(Consumable& firstFood, Consumable& secondFo
 		mInventory->AddToInventory(weirdLookingFood);
 
 		printf("You made A weird Looking Food...\n");
-
-		mInventory->RemoveFromInventory(firstFood.GetID());
-		mInventory->RemoveFromInventory(secondFood.GetID());
-		return;
 	}
+
+	mInventory->RemoveFromInventory(firstFood.GetID());
+	mInventory->RemoveFromInventory(secondFood.GetID());
 }
