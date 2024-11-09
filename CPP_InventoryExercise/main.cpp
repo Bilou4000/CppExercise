@@ -83,6 +83,7 @@ int main()
 
     //sort inventory
     inventory->SortInventory();
+    printf("note : we are sorting the inventory\n");
 
     printf("-------------------------\n");
 
@@ -112,8 +113,46 @@ int main()
     for (Item* item : inventory->GetInventory())
     {
         printf("%s \n", item->GetName().c_str());
-        printf("%d\n", (uint8_t) item->GetFirstType());
     }
 
+    printf("-------------------------\n");
+
+    printf("BUY CONSUMABLE : \n");
+
+    //buy meat
+    Consumable* steak = new Consumable(inventory->NewID(), ConsumableType::Food, "Steak", "A good looking steak", 5, ItemType::Consumable, ItemEffect::None);
+    steak->AddConsumableType(ConsumableType::Meat);
+    steak->AddConsumableType(ConsumableType::Cookable);
+    inventory->Buying(steak);
+
+    //buy meat
+    Consumable* mushroom = new Consumable(inventory->NewID(), ConsumableType::Food, "Mushroom", "A single mushroom", 1, ItemType::Consumable, ItemEffect::None);
+    mushroom->AddConsumableType(ConsumableType::Mushroom);
+    mushroom->AddConsumableType(ConsumableType::Cookable);
+    inventory->Buying(mushroom);
+
+    //buy meat
+    Consumable* chicken = new Consumable(inventory->NewID(), ConsumableType::Food, "Chicken", "A sturdy chicken", 4, ItemType::Consumable, ItemEffect::None);
+    chicken->AddConsumableType(ConsumableType::Meat);
+    chicken->AddConsumableType(ConsumableType::Cookable);
+    inventory->Buying(chicken);
+
+    printf("\nINVENTORY : \n");
+    for (Item* item : inventory->GetInventory())
+    {
+        printf("%s \n", item->GetName().c_str());
+    }
+
+    printf("-------------------------\n");
+
+    printf("COOKING : \n");
+    foodProcessor->Cook(*steak, *mushroom);
+    foodProcessor->Cook(*apple, *chicken);
+
+    printf("\nINVENTORY : \n");
+    for (Item* item : inventory->GetInventory())
+    {
+        printf("%s \n", item->GetName().c_str());
+    }
 }
 
