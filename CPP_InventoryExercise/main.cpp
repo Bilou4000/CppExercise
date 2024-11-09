@@ -42,6 +42,7 @@ int main()
 
     //create consumable and other weapon + add them to inventory
     Consumable* apple = new Consumable(inventory->NewID(), ConsumableType::Food, "Apple", "A big red apple", 1, ItemType::Consumable, ItemEffect::HeatResistance);
+    apple->AddConsumableType(ConsumableType::Cookable);
     inventory->Buying(apple);
 
     Weapon* axe = new Weapon(inventory->NewID(), 1, 10, "SturdyAxe", "The best axe", 3, ItemType::Weapon, ItemEffect::None);

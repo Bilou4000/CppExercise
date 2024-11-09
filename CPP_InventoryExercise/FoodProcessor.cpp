@@ -24,12 +24,26 @@ void FoodProcessor::Cook(Consumable& firstFood, Consumable& secondFood)
 void FoodProcessor::GetNewCookedItem(Consumable& firstFood, Consumable& secondFood)
 {
 	//if we have a herb or a vegetable or both -> Vegetable Stew
-	if (HasFlag(firstFood.GetType(), ConsumableType::Herb) && HasFlag(secondFood.GetType(), ConsumableType::Vegetable))
+	if ((HasFlag(firstFood.GetType(), ConsumableType::Herb) && HasFlag(secondFood.GetType(), ConsumableType::Vegetable)) 
+		|| (HasFlag(firstFood.GetType(), ConsumableType::Herb) && HasFlag(secondFood.GetType(), ConsumableType::Herb)) 
+		|| (HasFlag(firstFood.GetType(), ConsumableType::Vegetable) && HasFlag(secondFood.GetType(), ConsumableType::Vegetable)))
 	{
-		Consumable* vegetable_Stew = new Consumable(mInventory->NewID(), ConsumableType::Food, "Vegetable Stew", "A nice soup", 5, ItemType::Consumable, ItemEffect::None);
-		mInventory->AddToInventory(vegetable_Stew);
-
-		mInventory->RemoveFromInventory(firstFood.GetID());
-		mInventory->RemoveFromInventory(secondFood.GetID());
+		Consumable* vegetableStew = new Consumable(mInventory->NewID(), ConsumableType::Food, "Vegetable Stew", "A nice soup", 5, ItemType::Consumable, ItemEffect::None);
+		mInventory->AddToInventory(vegetableStew);
 	}
+	//if we have a meat and a mushroom or both -> Vegetable Stew
+	if (HasFlag(firstFood.GetType(), ConsumableType::Meat) && HasFlag(secondFood.GetType(), ConsumableType::Mushroom))
+	{
+		Consumable* MushroomPremiumSteak = new Consumable(mInventory->NewID(), ConsumableType::Food, "Mushroom Premium Steak", "An incredibly delicious steak", 5, ItemType::Consumable, ItemEffect::None);
+		mInventory->AddToInventory(MushroomPremiumSteak);
+	}
+	//if no specific recipe
+	else
+	{
+		Consumable* weirdLookingFood = new Consumable(mInventory->NewID(), ConsumableType::Food, "A weird Looking Food", "Might be dangerous to eat it", 0, ItemType::Consumable, ItemEffect::None);
+		mInventory->AddToInventory(weirdLookingFood);
+	}
+
+	mInventory->RemoveFromInventory(firstFood.GetID());
+	mInventory->RemoveFromInventory(secondFood.GetID());
 }
