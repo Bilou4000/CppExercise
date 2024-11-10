@@ -33,7 +33,7 @@ void FoodProcessor::GetNewCookedItem(Consumable& firstFood, Consumable& secondFo
 
 		printf("You made a Vegetable Stew !\n");
 	}
-	//if we have a meat and a mushroom or both -> Vegetable Stew
+	//if we have a meat and a mushroom -> Vegetable Stew
 	else if(HasFlag(firstFood.GetType(), ConsumableType::Meat) && HasFlag(secondFood.GetType(), ConsumableType::Mushroom))
 	{
 		Consumable* MushroomPremiumSteak = new Consumable(mInventory->NewID(), ConsumableType::Food, "Mushroom Premium Steak", "An incredibly delicious steak", 5, ItemType::Consumable, ItemEffect::None);
@@ -50,6 +50,7 @@ void FoodProcessor::GetNewCookedItem(Consumable& firstFood, Consumable& secondFo
 		printf("You made A weird Looking Food...\n");
 	}
 
+	//remove the item used for cooking from the inventory
 	mInventory->RemoveFromInventory(firstFood.GetID());
 	mInventory->RemoveFromInventory(secondFood.GetID());
 }
